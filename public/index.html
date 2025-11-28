@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head><title>Space Clicker</title></head>
+<body style="background:#1a1a2e;color:#e94560;text-align:center;font-family:sans-serif;display:flex;flex-direction:column;justify-content:center;height:100vh;">
+    <h1>Space Clicker</h1>
+    <h2>Score: <span id="score">0</span></h2>
+    <h3>High Score: <span id="highScore">...</span></h3>
+    <button onclick="clickBtn()" style="padding:20px;font-size:20px;border-radius:50%;background:#e94560;color:white;border:none;cursor:pointer;">CLICK</button>
+    <script>
+        let score = 0;
+        fetch('/api/score').then(r=>r.json()).then(d=>document.getElementById('highScore').innerText=d.highScore);
+        function clickBtn() {
+            score++;
+            document.getElementById('score').innerText = score;
+            if(score % 5 === 0) fetch('/api/score', {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({score})}).then(r=>r.json()).then(d=>document.getElementById('highScore').innerText=d.highScore);
+        }
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,1 @@
+echo "# DevOps Space Clicker" > README.md
