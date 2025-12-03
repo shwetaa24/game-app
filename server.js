@@ -5,7 +5,7 @@ const PORT = process.env.PORT || 8081;
 let highScore = 0;
 
 app.use(bodyParser.json());
-
+app.use(express.static('public'));
 
 app.get('/api/score', (req, res) => res.json({ highScore }));
 app.post('/api/score', (req, res) => {
