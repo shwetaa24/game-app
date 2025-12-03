@@ -7,7 +7,8 @@
     "start": "node server.js",
     "test": "jest",
     "lint": "echo 'No linting errors found'",
-    "dev": "node server.js" 
+    "dev": "node server.js", 
+    "build": "echo 'Vercel static build done' && mkdir -p .vercel/output/static && cp -r public/* .vercel/output/static/"
   },
   "dependencies": {
     "body-parser": "^1.20.3",
